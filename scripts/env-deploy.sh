@@ -4,7 +4,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 pushd "$DIR/.."
 #!
 
-source ./env-build.sh
+source $DIR/env-build.sh
 
 aws sts get-caller-identity
 
