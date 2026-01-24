@@ -10,7 +10,7 @@ aws sts get-caller-identity
 
 pushd oto-sam
 STACK_NAME="$ENV_ID-stack"
-sam depoly  -t "$DIR/../oto-sam/sam.cform.yaml"  --resolve-s3 --stack-name "$STACK_NAME" --capabilities CAPABILITY_NAMED_IAM 
+sam deploy  -t "$DIR/../oto-sam/sam.cform.yaml"  --resolve-s3 --stack-name "$STACK_NAME" --capabilities CAPABILITY_NAMED_IAM 
 popd
 
 #!
