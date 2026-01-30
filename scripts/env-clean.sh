@@ -5,10 +5,10 @@ pushd "$DIR/.."
 echo "script [$0] started"
 #!
 
-./mvnw clean verify
+./mvnw clean
 
 pushd oto-web
-npm run build
+rm -rf build .svelte-kit node_modules
 popd
 
 #!

@@ -1,62 +1,42 @@
-# oto_web
+# sv
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
 
-If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
+## Creating a project
 
-## Running the application in dev mode
+If you're seeing this, you've probably already done this step. Congrats!
 
-You can run your application in dev mode that enables live coding using:
-
-```shell script
-./mvnw quarkus:dev
+```sh
+# create a new project
+npx sv create my-app
 ```
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
+To recreate this project with the same configuration:
 
-## Packaging and running the application
-
-The application can be packaged using:
-
-```shell script
-./mvnw package
+```sh
+# recreate this project
+npx sv create --template minimal --types ts --add prettier eslint tailwindcss="plugins:typography,forms" sveltekit-adapter="adapter:static" devtools-json paraglide="languageTags:en, es+demo:yes" --install npm oto-web
 ```
 
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+## Developing
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
-If you want to build an _über-jar_, execute the following command:
+```sh
+npm run dev
 
-```shell script
-./mvnw package -Dquarkus.package.jar.type=uber-jar
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
 ```
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
+## Building
 
-## Creating a native executable
+To create a production version of your app:
 
-You can create a native executable using:
-
-```shell script
-./mvnw package -Dnative
+```sh
+npm run build
 ```
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
+You can preview the production build with `npm run preview`.
 
-```shell script
-./mvnw package -Dnative -Dquarkus.native.container-build=true
-```
-
-You can then execute your native executable with: `./target/oto_web-1.0.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult <https://quarkus.io/guides/maven-tooling>.
-
-## Provided Code
-
-### REST
-
-Easily start your REST Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
+> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.

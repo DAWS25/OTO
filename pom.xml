@@ -9,8 +9,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>oto-web</module>
-        <module>oto-web-lambda</module>
+        <module>oto-api</module>
+        <module>oto-api-lambda</module>
     </modules>
 
     <name>OTO 🏢🤖❤️</name>
@@ -21,11 +21,14 @@
         <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <skipITs>true</skipITs>
+        <surefire-plugin.version>3.5.4</surefire-plugin.version>
+
         <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
         <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
         <quarkus.platform.version>3.30.8</quarkus.platform.version>
-        <skipITs>true</skipITs>
-        <surefire-plugin.version>3.5.4</surefire-plugin.version>
+        <quarkus.analytics.enabled>false</quarkus.analytics.enabled>
+        <quarkus.banner.disable>true</quarkus.banner.disable>
     </properties>
 
     <dependencyManagement>
