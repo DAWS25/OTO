@@ -2,5 +2,5 @@ version: "0.5"
 
 processes:
   # foundation services
-  0-proxy:
+  0-web:
     command: mvn -f oto_web quarkus:dev
