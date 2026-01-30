@@ -1,14 +1,21 @@
   AWSTemplateFormatVersion: '2010-09-09'
   Transform: AWS::Serverless-2016-10-31
   Description: AWS Serverless Quarkus HTTP - oto_api_lambda-1.0.0-SNAPSHOT
+  
   Globals:
     Api:
       EndpointConfiguration: REGIONAL
       BinaryMediaTypes:
         - "*/*"
 
+  Parameters:
+    EnvId:
+      Type: String
+      Default: project-alpha
+      Description: Environment identifier used to prefix exported outputs.
+
   Resources:
-    OtoWebLambda:
+    APILambda:
       Type: AWS::Serverless::Function
       Properties:
         Handler: io.quarkus.amazon.lambda.runtime.QuarkusStreamHandler::handleRequest
@@ -21,11 +28,12 @@
           HttpApiEvent:
             Type: HttpApi
             Properties:
+              Method: ANY
               Path: "{proxy+}"
 
   Outputs:
-    OtoWebLambdaApi:
+    APILambdaInvokeURL:
       Description: URL for application
       Value: !Sub 'https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/'
       Export:
-        Name: OtoWebLambdaApi
+        Name: !Sub "${EnvId}-oto-api-invoke-url"
